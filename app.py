@@ -17,7 +17,7 @@ def load_model_once():
     """确保模型只加载一次（热重启时不重复加载）"""
     global model, MODEL_LOADED_AT
     if model is None:
-        model = tf.keras.models.load_model("tbm_model.h5")
+        model = tf.keras.models.load_model("../../../tbm_model_api/tbm_model.h5")
         MODEL_LOADED_AT = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 
@@ -71,4 +71,4 @@ def predict():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run(host="0.0.0.0", port=5000)  # 生产环境去掉 debug=True
